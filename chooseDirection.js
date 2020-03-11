@@ -2,7 +2,7 @@ const chooseDirection = function(body, directions) {
   let direction = null;
 
   // healthy regime: avoid danger
-  if (body.you.health > 50) {
+  if (body.you.health > 70) {
     let minDanger;
     directions.forEach((directionObject, i) => {
       if (Object.keys(directionObject).length == 0) return;
