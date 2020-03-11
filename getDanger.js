@@ -1,16 +1,17 @@
-const { getOpponentsPositions } = require('./getOpenSquares')
+const { getOccupiedSquares } = require('./getOpenSquares')
 
 const getDanger = (body, directions, possibleSquares) => {
   const headMultiplier = 3;
   let heads = body.board.snakes.map(snake => snake.body[0]).filter(head => head.x !== body.you.body[0].x || head.y !== body.you.body[0].y);
   possibleSquares.forEach((bool, i) => {
-    if(!possibleSquares[i]) return;
+    if(!bool) return;
     let danger = 0;
     let steppedSquare = getStep(i ,body.you.body[0])
     heads.forEach(head => {
       danger += headMultiplier / getRadialDistance(head, steppedSquare)
     });
     directions[i].danger = danger;
+    directions[i].danger += blockDanger(body, steppedSquare, 2)
   });
   return directions;
 }
@@ -29,8 +30,8 @@ const listHasSquare = (testSquare, squaresList) => {
 }
 
 const blockDanger = (info, steppedSquare, n) => {
-  let dangerSquares = 0;
-  const takenSquares = getOpponentsPositions(info).map(obj => JSON.parse(obj));
+  let blockDanger = 0;
+  const takenSquares = getOccupiedSquares(info).map(obj => JSON.parse(obj));
   for(let i = steppedSquare.x - n; i <= steppedSquare.x + n; i++){
     for(let j = steppedSquare.y - n; j <= steppedSquare.y + n; j++){
       if(j > info.board.height || j < 0 || i > info.board.width || i < 0){
@@ -41,7 +42,7 @@ const blockDanger = (info, steppedSquare, n) => {
       }
     }
   }
-  return dangerSquares;
+  return blockDanger;
 }
 
 //take in position and direction, return square travelled to
