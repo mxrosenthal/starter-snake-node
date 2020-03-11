@@ -36,10 +36,10 @@ const blockDanger = (info, steppedSquare, n) => {
   for(let i = steppedSquare.x - n; i <= steppedSquare.x + n; i++){
     for(let j = steppedSquare.y - n; j <= steppedSquare.y + n; j++){
       if(j > info.board.height || j < 0 || i > info.board.width || i < 0){
-        blockDanger += getRadialDistance({x:i, y:j}, steppedSquare)
+        blockDanger += 1 / getRadialDistance({x:i, y:j}, steppedSquare)
       }
       else if(listHasSquare({x:i, y:j}, takenSquares)){
-        blockDanger += getRadialDistance({x:i, y:j}, steppedSquare)
+        blockDanger += 1 / getRadialDistance({x:i, y:j}, steppedSquare)
         console.log(`blockdanger after square ${i}, ${j}: ${blockDanger}`)
       }
     }
