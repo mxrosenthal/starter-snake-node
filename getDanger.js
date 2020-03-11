@@ -12,7 +12,7 @@ const getDanger = (body, directions, possibleSquares) => {
     });
     directions[i].danger = danger;
     directions[i].danger += blockDanger(body, steppedSquare, 2);
-    console.log(directions[i])
+    console.log(directions[i], body.turn)
   });
   return directions;
 }
