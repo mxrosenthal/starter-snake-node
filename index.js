@@ -62,7 +62,7 @@ app.post('/move', (request, response) => {
   const dangerDirections = getDanger(info, directions, getOpenSquares(info));
   //returns "up", "down", etc.
   const direction = chooseDirection(info, dangerDirections);
-  const data = { move:direction };
+  const data = { move:direction, shout: 'working' };
   return response.json(data);
 });
 
