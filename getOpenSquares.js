@@ -40,7 +40,7 @@ const getOpenSquares = function(info) {
     openSquares[1] = false;
   }
   if (
-    south.y > info.board.length - 1 ||
+    south.y > info.board.height - 1 ||
     filledSquares.includes(JSON.stringify(south))
   ) {
     openSquares[2] = false;
