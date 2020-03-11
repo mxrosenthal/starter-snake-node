@@ -1,5 +1,7 @@
 const chooseDirection = function(body, directions) {
   let direction = null;
+
+  // healthy regime: avoid danger
   if (body.you.health > 50) {
     let minDanger;
     directions.forEach((directionObject, i) => {
@@ -10,6 +12,7 @@ const chooseDirection = function(body, directions) {
       }
     });
   } else {
+    // hungry regime: get food
     let maxFood;
     directions.forEach((directionObject, i) => {
       if (Object.keys(directionObject).length == 0) return;
