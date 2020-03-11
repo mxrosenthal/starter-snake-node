@@ -30,7 +30,7 @@ const getDanger = (body, directions, possibleSquares) => {
 };
 
 const getRadialDistance = (square1, square2) => {
-  return Math.sqrt((square1.x - square2.x) ** 2 + (square1.y - square2.y) ** 2);
+  return Math.abs(square1.x - square2.x) + Math.abs(square1.y - square2.y);
 };
 
 const listHasSquare = (testSquare, squaresList) => {
