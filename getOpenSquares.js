@@ -53,5 +53,5 @@ const getOpenSquares = function(info) {
 
 module.exports = {
   getOpenSquares,
-  getOpponentsPositions
+  getOccupiedSquares
 };
