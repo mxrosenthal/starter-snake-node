@@ -1,20 +1,19 @@
 const chooseDirection = function(body, directions) {
   let direction = null;
-  if (body.you.health > 50){
+  if (body.you.health > 50) {
     let minDanger;
-    directions.forEach((directionObject,i) => {
-      if(Object.keys(directionObject).length == 0 ) return;
-      if (directionObject.danger < minDanger || direction === null){
+    directions.forEach((directionObject, i) => {
+      if (Object.keys(directionObject).length == 0) return;
+      if (directionObject.danger < minDanger || direction === null) {
         minDanger = directionObject.danger;
         direction = i;
       }
     });
-  }
-  else {
-    if(Object.keys(directionObject).length == 0 ) return;
+  } else {
     let maxFood;
-    directions.forEach((directionObject,i) => {
-      if (directionObject.food > maxFood || direction === null){
+    directions.forEach((directionObject, i) => {
+      if (Object.keys(directionObject).length == 0) return;
+      if (directionObject.food > maxFood || direction === null) {
         maxFood = directionObject.food;
         direction = i;
       }
@@ -22,13 +21,13 @@ const chooseDirection = function(body, directions) {
   }
   switch (direction) {
     case 0:
-      return "up"
+      return 'up';
     case 1:
-      return "right"
+      return 'right';
     case 2:
-      return "down"
+      return 'down';
     case 3:
-      return "left"
+      return 'left';
   }
 };
 
