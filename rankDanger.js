@@ -1,25 +1,30 @@
-const getDanger = (body, directions, possibleSquares) => {
+const rankDanger = (body, directions, possibleSquares) => {
+  // Get heads of other snakes
   let heads = body.board.snakes
     .map(snake => snake.body[0])
     .filter(
-      head => head.x !== body.you.body[0].x || head.y !== body.you.body[0].y
+      head =>
+        head.x !== body.you.body[0].x || head.y !== body.you.body[0].y
     );
-  possibleSquares.forEach((bool, i) => {
-    if (!possibleSquares[i]) return;
+
+  // Calculates and assigns danger of possible squares
+  possibleSquares.forEach((squarePossible, i) => {
+    if (!squarePossible) return;
     let danger = 0;
     let steppedSquare = getStep(i, body.you.body[0]);
     heads.forEach(head => {
-      // console.log(head, steppedSquare, body.you.body[0])
       danger += 1 / getRadialDistance(head, steppedSquare);
     });
     directions[i].danger = danger;
   });
+
   return directions;
 };
 
-const getRadialDistance = (square1, square2) => {
-  return Math.sqrt((square1.x - square2.x) ** 2 + (square1.y - square2.y) ** 2);
-};
+const getRadialDistance = (square1, square2) =>
+  Math.sqrt(
+    (square1.x - square2.x) ** 2 + (square1.y - square2.y) ** 2
+  );
 
 //take in position and direction, return square travelled to
 const getStep = (direction, location) => {
@@ -37,4 +42,4 @@ const getStep = (direction, location) => {
   }
 };
 
-module.exports = getDanger;
+module.exports = rankDanger;

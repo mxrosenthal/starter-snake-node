@@ -1,9 +1,4 @@
-const moveList = [];
-
-const findClosestFood = function(info, openSquares) {
-  const head = info.you.body[0];
-  const foodArray = info.board.food;
-
+const rankFood = function(head, foodArray) {
   //making variables at the locations around the snake head.
   const head_up = { ...head, y: head.y - 1 };
   const head_right = { ...head, x: head.x + 1 };
@@ -41,28 +36,4 @@ const findClosestFood = function(info, openSquares) {
   return [{}, {}, {}, {}];
 };
 
-const chooseDirection = function(closestMealArray, info) {
-  const headPosition = info.you.body[0];
-  let lastMove = moveList[moveList.length];
-  const rise = closestMealArray[0].y - headPosition.y;
-  const run = closestMealArray[0].x - headPosition.x;
-
-  if (Math.abs(rise) >= Math.abs(run) && rise > 0) {
-    moveList.push('down');
-    return 'down';
-  } else if (Math.abs(rise) >= Math.abs(run) && rise < 0) {
-    moveList.push('up');
-    return 'up';
-  } else if (Math.abs(rise) <= Math.abs(run) && run > 0) {
-    moveList.push('right');
-    return 'right';
-  } else if (Math.abs(rise) <= Math.abs(run) && run < 0) {
-    moveList.push('left');
-    return 'left';
-  }
-};
-
-module.exports = {
-  findClosestFood,
-  chooseDirection
-};
+module.exports = rankFood;

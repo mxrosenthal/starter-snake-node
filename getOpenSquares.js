@@ -10,43 +10,45 @@ const getOccupiedSquares = function(info) {
       positions.push(JSON.stringify(square));
     }
   }
-  //add coords of your body to positions 
+  //add coords of your body to positions
   for (const square of ourSnake) {
     positions.push(JSON.stringify(square));
   }
   return positions;
-}
+};
 
 // potential upgrade for this function would be to take into consideration if a square is occupied by a tail that will move out of our way
-const getOpenSquares = function (info) {
+const getOpenSquares = function(info) {
   let openSquares = [true, true, true, true];
   const head = info.you.body[0];
   const filledSquares = getOccupiedSquares(info);
-  
+
   // get all potential next moves from current position
-  const north = {"x": head.x,"y": head.y - 1}
-  const east = {"x": head.x + 1,"y": head.y}
-  const south = {"x": head.x, "y": head.y + 1}
-  const west = {"x": head.x - 1, "y": head.y}
+  const north = { x: head.x, y: head.y - 1 };
+  const east = { x: head.x + 1, y: head.y };
+  const south = { x: head.x, y: head.y + 1 };
+  const west = { x: head.x - 1, y: head.y };
 
   // if the square is occupied set value to false for that direction
   if (north.y < 0 || filledSquares.includes(JSON.stringify(north))) {
     openSquares[0] = false;
-  } 
-  if (east.x > info.board.width - 1 || filledSquares.includes(JSON.stringify(east))) {
+  }
+  if (
+    east.x > info.board.width - 1 ||
+    filledSquares.includes(JSON.stringify(east))
+  ) {
     openSquares[1] = false;
-  } 
-  if (south.y > info.board.length - 1 || filledSquares.includes(JSON.stringify(south))) {
+  }
+  if (
+    south.y > info.board.length - 1 ||
+    filledSquares.includes(JSON.stringify(south))
+  ) {
     openSquares[2] = false;
-  } 
+  }
   if (west.x < 0 || filledSquares.includes(JSON.stringify(west))) {
     openSquares[3] = false;
-  }  
+  }
   return openSquares;
-}
-
-module.exports = {
-  getOpenSquares,
-  getOccupiedSquares
 };
 
+module.exports = getOpenSquares;
