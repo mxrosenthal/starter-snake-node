@@ -28,18 +28,9 @@ const getOpenSquares = function(info) {
   const east = { x: head.x + 1, y: head.y };
   const south = { x: head.x, y: head.y + 1 };
   const west = { x: head.x - 1, y: head.y };
-<<<<<<< HEAD
-  console.log(south, )
-  if (
-    JSON.stringify(north) === JSON.stringify(neck) ||
-    north.y < 0 ||
-    filledSquares.includes(JSON.stringify(north))
-  ) {
-=======
 
   // if the square is occupied set value to false for that direction
   if (north.y < 0 || filledSquares.includes(JSON.stringify(north))) {
->>>>>>> 886d462b0ba1fe0aa05f61b5bd48038458d4c1b8
     openSquares[0] = false;
   }
   if (
@@ -49,12 +40,7 @@ const getOpenSquares = function(info) {
     openSquares[1] = false;
   }
   if (
-<<<<<<< HEAD
-    JSON.stringify(south) === JSON.stringify(neck) ||
-    south.y >= info.board.height - 1 ||
-=======
     south.y > info.board.height - 1 ||
->>>>>>> 886d462b0ba1fe0aa05f61b5bd48038458d4c1b8
     filledSquares.includes(JSON.stringify(south))
   ) {
     openSquares[2] = false;
