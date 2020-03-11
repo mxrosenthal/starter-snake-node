@@ -11,7 +11,7 @@ const getDanger = (body, directions, possibleSquares) => {
       danger += headMultiplier / getRadialDistance(head, steppedSquare)
     });
     directions[i].danger = danger;
-    directions[i].danger += blockDanger(body, steppedSquare, 2)
+    // directions[i].danger += blockDanger(body, steppedSquare, 2)
   });
   return directions;
 }
