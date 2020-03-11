@@ -23,7 +23,7 @@ const getDanger = (body, directions, possibleSquares) => {
 
     //adding danger ranking to the final object in the directions array
     directions[i].danger = danger;
-    directions[i].danger += blockDanger(body, steppedSquare, 2);
+    directions[i].danger += blockDanger(body, steppedSquare, 10);
     console.log(directions[i], body.turn);
   });
   return directions;
