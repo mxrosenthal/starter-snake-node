@@ -40,6 +40,7 @@ const blockDanger = (info, steppedSquare, n) => {
       }
       else if(listHasSquare({x:i, y:j}, takenSquares)){
         blockDanger += getRadialDistance({x:i, y:j}, steppedSquare)
+        console.log(`blockdanger after square ${i}, ${j}: ${blockDanger}`)
       }
     }
   }
