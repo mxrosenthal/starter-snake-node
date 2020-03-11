@@ -10,6 +10,7 @@ const rankFood = function(head, foodArray, info) {
   const squareRankArray = [];
 
   const openSquares = getOpenSquares(info)
+  console.log(openSquares);
 
   let ind = 0;
   if (foodArray) {
